@@ -18,4 +18,4 @@ function getJoke() {
 }
 
 //DLA CHETNYCH
-onload = getJoke();
+getJoke();
