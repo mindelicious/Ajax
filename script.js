@@ -1,21 +1,26 @@
-var url = 'http://api.icndb.com/jokes/random',
-    button = document.getElementById('get-joke');
+var url = 'https://restcountries.eu/rest/v1/name/',
+    countriesList = $('#countries');
 
-button.addEventListener('click', function() {
-  getJoke();
-});
+$('#search').click(searchCountries);
+/*$('#search').keypress(function(e) {
+    if(e.which == 13) {
+        $('#search').click(searchCountries);
+    }
+});*/
 
-var paragraph = document.getElementById('joke');
-
-function getJoke() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url);
-  xhr.addEventListener('load', function(){
-    var response = JSON.parse(xhr.response);
-    paragraph.innerHTML = response.value.joke;
-  });
-  xhr.send();
+function searchCountries() {
+ 	var countryName = $('#country-name').val();
+   if(!countryName.length) countryName = 'Poland';
+   $.ajax({
+        url: url + countryName,
+        method: 'GET',
+ 		success: showCountriesList
+  	});
 }
 
-//DLA CHETNYCH
-getJoke();
+function showCountriesList(resp) {
+  	countriesList.empty();
+resp.forEach(function(item) {
+   	$('<li>').text(item.name).appendTo(countriesList);
+});
+}
