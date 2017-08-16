@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:200&subset=latin-ext');
+body {
+font-family: 'Dosis';
+background-color: #1dcaff;
+}
+main {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.trigger {
+    background-color: #1dcaff;
+    border: 0.5px solid white;
+    border-radius: 3px;
+    color: white;
+    width: 200px;
+    height: 25px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.tweetbtn {
+    background-color: #1dcaff;
+    border: 0.5px solid white;
+    border-radius: 3px;
+    width: 200px;
+    height: 25px;
+}
+.tweet {
+    color: white;
+    text-decoration: none;
+}
