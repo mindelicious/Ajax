@@ -1,12 +1,12 @@
-var url = 'https://restcountries.eu/rest/v1/name/',
+var url = 'https://restcountries.eu/rest/v2/name/',
     countriesList = $('#countries');
 
 $('#search').click(searchCountries);
-/*$('#search').keypress(function(e) {
-    if(e.which == 13) {
-        $('#search').click(searchCountries);
+$('#country-name').keypress(function(e) {
+    if (e.which == 13) {
+        searchCountries();
     }
-});*/
+});
 
 function searchCountries() {
  	var countryName = $('#country-name').val();
@@ -19,8 +19,11 @@ function searchCountries() {
 }
 
 function showCountriesList(resp) {
-  	countriesList.empty();
-resp.forEach(function(item) {
-   	$('<li>').text(item.name).appendTo(countriesList);
-});
+	countriesList.empty();
+  resp.forEach(function(item) {
+   	  $('<li>')
+        .text(item.name)
+        .append('<img src="'+item.flag+'" width="50">')
+        .appendTo(countriesList);
+  });
 }
