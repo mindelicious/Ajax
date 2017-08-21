@@ -1,19 +1,8 @@
 function Column(id, name) {
+    var self = this;
     this.id = id;
     this.name = name || 'No name given';
-}
-
-// USUWANIE KOLUMN
-deleteColumn: function() {
-    var self = this;
-    $.ajax({
-      url: baseUrl + '/column/' + self.id,
-      method: 'DELETE',
-      success: function(response){
-        self.element.remove();
-      }
-    });
- }
+    this.element = createColumn();
  
 	function createColumn() {
 		// TWORZENIE NOWYCH WĘZŁÓW
@@ -57,7 +46,15 @@ Column.prototype = {
 	createCard: function(card) {
 	  this.element.children('ul').append(card.element);
 	},
-	deleteColumn: function() {
-	  this.element.remove();
-	}
+	// USUWANIE KOLUMN
+    deleteColumn: function() {
+        var self = this;
+        $.ajax({
+          url: baseUrl + '/column/' + self.id,
+          method: 'DELETE',
+          success: function(response){
+            self.element.remove();
+          }
+        });
+     }
 };

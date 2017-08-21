@@ -1,6 +1,3 @@
-var column = new Column(response.id, columnName);
-board.createColumn(column);
-
 var board = {
 	name: 'Tablica Kanban',
 	createColumn: function(column) {
@@ -9,11 +6,6 @@ var board = {
 	},
 	element: $('#board .column-container')
 };
-
-$('.create-column').click(function() {
-	var columnName = prompt('Enter a column name');
-	board.createColumn(new Column(columnName));
-});
 
 $('.create-column')
     .click(function() {
